@@ -7,13 +7,13 @@ const createStudent =async (req, res) => {
         const student = new Student({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            email: req.body.email,
-            mobile: req.body.mobile,
-            password: req.body.password,
             age: req.body.age,
+            email: req.body.email,
+            place:req.body.place,
+            createdBy:req.userId
+            
         })
         const createStudent = await student.save();
-        console.log(createStudent);
         if (createStudent) {
             res.json({ message: 'Created' });
         }
@@ -26,13 +26,13 @@ const createStudent =async (req, res) => {
 
 const getAllStudent=async (req,res)=>{
     try {
-        const getAll=await Student.find()
+        const getAll=await Student.find({createdBy:req.userId})
         if(getAll){
-            res.sent(getAll)
+            res.send(getAll)
         }
         
     } catch (error) {
-        console.log(ERROR)
+        console.log(error)
         
     }
 }
@@ -83,4 +83,4 @@ const deleteStudent =async (req,res)=>{
 }
 
 
-module.exports = { createStudent,getAllStudent,getStudent,updateStudent,deleteStudent };
+module.exports = { createStudent,getAllStudent,getStudent,updateStudent,deleteStudent };                            

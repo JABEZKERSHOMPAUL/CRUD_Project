@@ -3,12 +3,12 @@ const mongoose=require('mongoose')
 const studentSchema=mongoose.Schema({
     firstname:{type:String,require:true},
     lastname:{type:String,require:true},
+    age:{type:Number,require:true},
     email:{type:String,require:true},
-    mobile:{type:Number},
-    password:{type:String,require:true},
-    age:{type:Number}
+    place:{type:String,require:true},
+    createdBy:{type:mongoose.Schema.Types.ObjectId}
 })
 
-const Student=mongoose.model('Students',studentSchema)
+const Student=mongoose.model('CRUD-Students',studentSchema)
 
 module.exports = Student;
