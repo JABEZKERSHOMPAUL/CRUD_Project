@@ -7,6 +7,7 @@ const authorization =async(req,res,next)=>{
        
         if(decode){
             req.userId= decode.id
+            
            if(req.userId!==""){
             let user=await User.findOne({_id:req.userId})
             
