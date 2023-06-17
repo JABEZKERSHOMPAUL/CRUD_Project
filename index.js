@@ -5,7 +5,7 @@ const student_router = require("./routes/Student_routes");
 const User_router = require("./routes/user_routes");
 const Movie_router=require("./routes/Movies_routes")
 
-const PORT=process.env.PORT ||8000;
+const PORT=process.env.PORT || 8000;
 
 const app=express()
 app.use(express.json());
